@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>GymMate</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+        }
+
+        .navbar {
+            background-color: #000;
+            color: #fff;
+            padding: 20px;
+        }
+
+        .navbar a {
+            color: #fff;
+            margin-right: 20px;
+            text-decoration: none;
+        }
+
+        .hero {
+            background-color: #000;
+            padding: 100px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #fff;
+            background: linear-gradient(45deg, #F81CE5, #4182FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: animateGradient 5s linear infinite;
+        }
+
+        @keyframes animateGradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            color: #fff;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #F81CE5, #4182FF);
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            box-shadow: 0 0 10px #F81CE5;
+            transition: color 2s ease, box-shadow 2s ease;
+            animation: pulse 4s infinite;
+            background: linear-gradient(45deg, #F81CE5, #4182FF);
+            color: #fff;
+        }
+
+        .button:hover {
+            color: #100d10;
+            box-shadow: 0 0 20px #F81CE5;
+            background: linear-gradient(45deg, #D800D6, #00FFFF);
+        }
+
+        .form-container {
+            background-color: #000;
+            padding: 50px;
+            text-align: center;
+            max-width: 500px;
+            margin: 0 auto;
+            border: 2px solid #F81CE5;
+            border-radius: 10px;
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="tel"],
+        .form-container textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            border: none;
+            background-color: #000;
+            color: #fff;
+        }
+
+        .form-container input[type="submit"] {
+            padding: 10px 30px;
+            background: linear-gradient(45deg, #F81CE5, #4182FF);
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 0 10px #F81CE5;
+        }
+
+        .form-container input[type="submit"]:hover {
+            background: linear-gradient(45deg, #D800D6, #00FFFF);
+        }
+
+        .footer {
+            background-color: black;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        #globeCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 10px #F81CE5;
+            }
+
+            50% {
+                box-shadow: 0 0 20px #1c41f8;
+            }
+
+            100% {
+                box-shadow: 0 0 10px #1cf836;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <a href="Gymmate.html">Home</a>
+        <a href="Features.html">Features</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="calorie.html">Calorie Calculator</a>
+        <a href="about.html">About</a>
+        <a href="gallery.html">Gallery</a>
+    </div>
+
+    </div>
+
+    <div class="hero">
+        <h1 id="text">Build Your Body with Ease</h1>
+        <p>Discover the power of GymMate platform</p>
+        <a href="Features.html" id="button" class="button">Get Started</a>
+    </div>
+
+    <div class="form-container">
+        <h2>Get in Touch</h2>
+        <form id="contactForm">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <br>
+            <input type="tel" name="phone" placeholder="Your Phone Number" required>
+            <br>
+            <textarea name="address" placeholder="Your Address" rows="5" required></textarea>
+            <br>
+            <input type="submit" value="Send Message" class="button">
+        </form>
+    </div>
+
+    <div class="footer">
+        &copy; 2023 Gymmate. All rights reserved.
+    </div>
+    <canvas id="globeCanvas"></canvas>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js">
+        const canvas = document.getElementById('globeCanvas');
+        const renderer = new THREE.WebGLRenderer({ canvas });
+
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 10;
+
+        const geometry = new THREE.SphereGeometry(5, 32, 32);
+        const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        const globe = new THREE.Mesh(geometry, material);
+        scene.add(globe);
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            globe.rotation.y += 0.01;
+
+            renderer.render(scene, camera);
+        }
+
+        animate();
+        const contactForm = document.getElementById('contactForm');
+
+        contactForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const formData = new FormData(contactForm);
+            const data = Object.fromEntries(formData.entries());
+
+            // You can do whatever you want with the form data here
+            console.log(data);
+
+            // Clear the form fields
+            contactForm.reset();
+        });
+
+        const textElement = document.getElementById('text');
+        const buttonElement = document.getElementById('button');
+        const words = textElement.innerText.split(' ');
+        let currentWordIndex = 0;
+
+        function updateWordColor() {
+            const colors = ['#F81CE5', '#4182FF', '#32CD32', '#FFA500', '#FF1493', '#00FFFF', '#FFD700'];
+            const currentColor = colors[currentWordIndex % colors.length];
+            const currentWord = words[currentWordIndex % words.length];
+            textElement.innerHTML = words.map((word, index) => {
+                if (index === currentWordIndex % words.length) {
+                    return `<span style="color: ${currentColor};">${word}</span>`;
+                }
+                return word;
+            }).join(' ');
+
+            buttonElement.style.color = currentColor;
+            buttonElement.style.boxShadow = `0 0 10px ${currentColor}`;
+            currentWordIndex++;
+        }
+
+        setInterval(updateWordColor, 3000);
+    </script>
+</body>
+
+</html>

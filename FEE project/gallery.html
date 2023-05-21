@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Gallery - Gymmate</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 50px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #fff;
+            text-shadow: 0 0 10px #F81CE5, 0 0 20px #F81CE5, 0 0 40px #F81CE5, 0 0 80px #F81CE5;
+        }
+
+        .gallery-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .gallery-item {
+            width: 300px;
+            height: 200px;
+            margin: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .neon-text {
+            display: inline-block;
+            color: #fff;
+            font-size: 48px;
+            text-shadow: 0 0 10px #F81CE5, 0 0 20px #F81CE5, 0 0 40px #F81CE5, 0 0 80px #F81CE5;
+            animation: neon-glow 1s ease-in-out infinite alternate;
+        }
+
+        @keyframes neon-glow {
+            from {
+                text-shadow: 0 0 10px #F81CE5, 0 0 20px #F81CE5, 0 0 40px #F81CE5, 0 0 80px #F81CE5;
+            }
+
+            to {
+                text-shadow: 0 0 20px #F81CE5, 0 0 40px #F81CE5, 0 0 80px #F81CE5, 0 0 160px #F81CE5;
+            }
+        }
+
+        .navbar {
+            background-color: #000;
+            color: #fff;
+            padding: 20px;
+        }
+
+        .navbar a {
+            color: #fff;
+            margin-right: 20px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <a href="Gymmate.html">Home</a>
+        <a href="Features.html">Features</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="calorie.html">Calorie Calculator</a>
+        <a href="about.html">About</a> 
+        <a href="gallery.html">Gallery</a> 
+    </div>
+    <div class="container">
+        <h1><span class="neon-text">Gallery</span> of Our Gym</h1>
+        <div class="gallery-container">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Image 1">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1580261450046-d0a30080dc9b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGd5bXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Image 2">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1595078475328-1ab05d0a6a0e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=700&q=80" alt="Image 3">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1549476464-37392f717541?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGd5bXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Image 4">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1590487988256-9ed24133863e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGd5bXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Image 5">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1571731956672-f2b94d7dd0cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzN8fGd5bXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Image 6">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1580086319619-3ed498161c77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGd5bXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Image 7">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1580261450046-d0a30080dc9b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGd5bXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Image 8">
+            </div>
+            <div class="gallery-item">
+                <img src="https://plus.unsplash.com/premium_photo-1679635697818-2cdd42cbc6e0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGd5bXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Image 9">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1593079831268-3381b0db4a77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGd5bXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Image 10">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1550345332-09e3ac987658?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Z3ltfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" alt="Image 11">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1577221084712-45b0445d2b00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Z3ltfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" alt="Image 12">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

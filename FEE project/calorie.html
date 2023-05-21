@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Calorie Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+        }
+
+        .navbar {
+            background-color: #000;
+            color: #fff;
+            padding: 20px;
+            display: flex;
+        }
+
+        .navbar a {
+            color: #fff;
+            margin-right: 20px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .calorie-calculator-container {
+            background-color: #000;
+            padding: 100px;
+            text-align: center;
+        }
+
+        .calorie-calculator-container h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .input-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .input-container label {
+            color: #fff;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .input-container input {
+            background: linear-gradient(to right, #4e32d2, #eeedff);
+            border: 2px solid #4e32d2;
+            color: #fff;
+            padding: 10px;
+            width: 200px;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .input-container select {
+            background: linear-gradient(to right, #4e32d2, #eeedff);
+            border: 2px solid #4e32d2;
+            color: #fff;
+            padding: 10px;
+            width: 200px;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .calculate-button {
+            background: linear-gradient(to right, #4e32d2, #da620c);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+            animation: neon-gradient 1.5s infinite alternate;
+        }
+
+        #recommended-calories {
+            color: #fff;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        .footer {
+            background-color: #000;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        @keyframes neon-gradient {
+            0% {
+                border-color: #4e32d2;
+            }
+            50% {
+                border-color: #eeedff;
+            }
+            100% {
+                border-color: #4e32d2;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <a href="Gymmate.html">Home</a>
+        <a href="Features.html">Features</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="calorie.html">Calorie Calculator</a>
+        <a href="about.html">About</a> 
+        <a href="gallery.html">Gallery</a> 
+    </div>
+
+    <div class="calorie-calculator-container">
+        <h2>Calorie Calculator</h2>
+
+        <div class="input-container">
+            <label for="age">Age:</label>
+            <input type="number" id="age" required>
+
+            <label for="weight">Weight (in kg):</label>
+            <input type="number" id="weight" required>
+
+            <label for="height">Height (in cm):</label>
+            <input type="number" id="height" required>
+
+            <label for="gender">Gender:</label>
+            <select id="gender" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+
+            <label for="activity-level">Activity Level:</label>
+            <select id="activity-level" required>
+                <option value="sedentary">Sedentary (little or no exercise)</option>
+                <option value="lightly-active">Lightly Active (light exercise/sports 1-3 days/week)</option>
+                <option value="moderately-active">Moderately Active (moderate exercise/sports 3-5 days/week)</option>
+                <option value="very-active">Very Active (hard exercise/sports 6-7 days a week)</option>
+                <option value="extra-active">Extra Active (very hard exercise/sports & physical job or 2x training)</option>
+            </select>
+
+            <label for="calories-breakfast">Calories - Breakfast:</label>
+            <input type="number" id="calories-breakfast" required>
+
+            <label for="calories-lunch">Calories - Lunch:</label>
+            <input type="number" id="calories-lunch" required>
+
+            <label for="calories-dinner">Calories - Dinner:</label>
+            <input type="number" id="calories-dinner" required>
+
+            <label for="calories-snacks">Calories - Snacks:</label>
+            <input type="number" id="calories-snacks" required>
+
+            <button class="calculate-button" onclick="calculateRecommendedCalories()">Calculate</button>
+        </div>
+
+        <div id="recommended-calories"></div>
+    </div>
+
+    <div class="footer">
+        &copy; 2023 Your Gym. All rights reserved.
+    </div>
+
+    <script>
+        function calculateRecommendedCalories() {
+            const age = document.getElementById('age').value;
+            const weight = document.getElementById('weight').value;
+            const height = document.getElementById('height').value;
+            const gender = document.getElementById('gender').value;
+            const activityLevel = document.getElementById('activity-level').value;
+
+            let recommendedCalories;
+
+            if (gender === 'male') {
+                recommendedCalories = calculateMaleCalories(weight, height, age, activityLevel);
+            } else {
+                recommendedCalories = calculateFemaleCalories(weight, height, age, activityLevel);
+            }
+
+            const recommendedCaloriesElement = document.getElementById('recommended-calories');
+            recommendedCaloriesElement.textContent = 'Recommended Daily Calories: ' + recommendedCalories;
+        }
+
+        function calculateMaleCalories(weight, height, age, activityLevel) {
+            let bmr = 10 * weight + 6.25 * height - 5 * age + 5;
+
+            switch (activityLevel) {
+                case 'sedentary':
+                    bmr *= 1.2;
+                    break;
+                case 'lightly-active':
+                    bmr *= 1.375;
+                    break;
+                case 'moderately-active':
+                    bmr *= 1.55;
+                    break;
+                case 'very-active':
+                    bmr *= 1.725;
+                    break;
+                case 'extra-active':
+                    bmr *= 1.9;
+                    break;
+                default:
+                    break;
+            }
+
+            return Math.round(bmr);
+        }
+
+        function calculateFemaleCalories(weight, height, age, activityLevel) {
+            let bmr = 10 * weight + 6.25 * height - 5 * age - 161;
+
+            switch (activityLevel) {
+                case 'sedentary':
+                    bmr *= 1.2;
+                    break;
+                case 'lightly-active':
+                    bmr *= 1.375;
+                    break;
+                case 'moderately-active':
+                    bmr *= 1.55;
+                    break;
+                case 'very-active':
+                    bmr *= 1.725;
+                    break;
+                case 'extra-active':
+                    bmr *= 1.9;
+                    break;
+                default:
+                    break;
+            }
+
+            return Math.round(bmr);
+        }
+    </script>
+</body>
+
+</html>

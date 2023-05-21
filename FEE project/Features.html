@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Features</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+        }
+
+        .navbar {
+            background-color: #000;
+            color: #fff;
+            padding: 20px;
+        }
+
+        .navbar a {
+            color: #fff;
+            margin-right: 20px;
+            text-decoration: none;
+        }
+
+        .hero {
+            background-color: #000;
+            padding: 100px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            color: #fff;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #000;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            box-shadow: 0 0 10px #F81CE5;
+            transition: color 2s ease, box-shadow 2s ease;
+            animation: pulse 4s infinite;
+        }
+
+        .button:hover {
+            color: #F81CE5;
+            box-shadow: 0 0 20px #F81CE5;
+        }
+
+        .feature-container {
+            background-color: #000;
+            padding: 100px;
+            text-align: center;
+        }
+
+        .feature-container h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .feature-container p {
+            font-size: 18px;
+            color: #fff;
+        }
+
+        .feature-item {
+            margin-bottom: 40px;
+        }
+
+        .feature-item img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .feature-item h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .feature-item p {
+            font-size: 16px;
+            color: #fff;
+        }
+
+        .footer {
+            background-color: #000;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 10px #F81CE5;
+            }
+
+            50% {
+                box-shadow: 0 0 20px #361cf8;
+            }
+
+            100% {
+                box-shadow: 0 0 10px #2ef81c;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <a href="Gymmate.html">Home</a>
+        <a href="Features.html">Features</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="calorie.html">Calorie Calculator</a>
+        <a href="about.html">About</a> 
+        <a href="gallery.html">Gallery</a> 
+    </div>
+
+    <div class="hero">
+        <h1 id="text">Welcome to Your Gym</h1>
+        <p>Get fit and stay healthy with our state-of-the-art gym facilities.</p>
+        <a href="pricing.html" id="button" class="button">Join Now</a>
+    </div>
+
+    <div class="feature-container">
+        <h2>Our Features</h2>
+        <div class="feature-item">
+            <h3>Personal Training</h3>
+            <p>Get personalized training sessions with our expert trainers.</p>
+        </div>
+        <div class="feature-item">
+            <h3>Group Classes</h3>
+            <p>Join our group classes and enjoy a fun workout with others.</p>
+        </div>
+        <div class="feature-item">
+            <h3>Cardio Equipment</h3>
+            <p>Access a wide range of cardio machines for a great cardio workout.</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        &copy; 2023 Gymmate. All rights reserved.
+    </div>
+
+    <script>
+        const textElement = document.getElementById('text');
+        const buttonElement = document.getElementById('button');
+        const words = textElement.innerText.split(' ');
+        let currentWordIndex = 0;
+
+        function updateWordColor() {
+            const colors = ['#F81CE5', '#4182FF', '#32CD32', '#FFA500', '#FF1493', '#00FFFF', '#FFD700'];
+            const currentColor = colors[currentWordIndex % colors.length];
+            const currentWord = words[currentWordIndex % words.length];
+            textElement.innerHTML = words.map((word, index) => {
+                if (index === currentWordIndex % words.length) {
+                    return `<span style="color: ${currentColor};">${word}</span>`;
+                }
+                return word;
+            }).join(' ');
+
+            buttonElement.style.color = currentColor;
+            buttonElement.style.boxShadow = `0 0 10px ${currentColor}`;
+            currentWordIndex++;
+        }
+
+        setInterval(updateWordColor, 3000);
+    </script>
+</body>
+
+</html>
